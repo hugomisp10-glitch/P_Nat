@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173c32">
+<title>Natal Mágico — Gestão de prendas</title>
+<style>
+:root{--green:#173c32;--green2:#245746;--cream:#fbf8f1;--paper:#fffdf9;--red:#b84c45;--gold:#c49a50;--ink:#25332d;--muted:#78817a;--line:#e9e4d9;--shadow:0 12px 35px #173c3210}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:var(--green);color:#fff;padding:28px max(20px,calc((100% - 1100px)/2));position:relative;overflow:hidden}
+header:after{content:"✦  ✧  ✦";position:absolute;right:6%;top:20px;color:#ffffff40;font-size:34px;letter-spacing:16px}
+.kicker{color:#d8c28e;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:700}
+h1{font:500 clamp(28px,5vw,42px)/1.15 Georgia,serif;margin:6px 0}
+header p{margin:8px 0 0;color:#e1e9e2}
+main{max-width:1100px;margin:26px auto;padding:0 18px 50px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.stat,.panel,.child-card{background:var(--paper);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
+.stat{padding:15px 17px}.stat span{display:block;color:var(--muted);font-size:12px}.stat strong{font:600 27px Georgia,serif;color:var(--green)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}
+input,select,textarea{font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px;min-width:0}
+input:focus,select:focus,textarea:focus{outline:2px solid #c49a5066;border-color:var(--gold)}
+#search{flex:1;min-width:190px}
+button{font:600 14px system-ui;border:0;border-radius:9px;padding:10px 15px;cursor:pointer;transition:.15s}
+button:hover{filter:brightness(.96);transform:translateY(-1px)}
+.primary{background:var(--green);color:white}.secondary{background:#efe9dc;color:var(--green)}.danger{background:#f8e9e6;color:#9c3932}.small{padding:7px 10px;font-size:12px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:25px 0 12px}
+h2{font:500 23px Georgia,serif;margin:0;color:var(--green)}
+#children{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.child-card{padding:17px}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.child-name{font:600 21px Georgia,serif;color:var(--green)}
+.age{color:var(--muted);font-size:13px}
+.gift{border-top:1px solid var(--line);padding:13px 0 3px;margin-top:13px}
+.gift-head{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.gift-title{font-weight:650}.gift-meta{font-size:12px;color:var(--muted);margin-top:3px}
+.status{font-size:11px;font-weight:700;border-radius:30px;padding:4px 9px;white-space:nowrap}
+.s-pendente{background:#f0eee8;color:#70695b}.s-comprada{background:#e7f0f7;color:#35647f}.s-embrulho{background:#fff1d8;color:#92651c}.s-embrulhada{background:#e5f1e7;color:#356b43}.s-entregue{background:#eee8f6;color:#70518d}
+.card-actions{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap}
+.empty{grid-column:1/-1;text-align:center;padding:38px 15px;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:15px}
+.panel{padding:18px;margin-top:22px}
+.progress-track{height:9px;background:#eee9df;border-radius:20px;overflow:hidden;margin:10px 0}
+.progress-fill{height:100%;background:var(--green2);width:0;transition:width .2s}
+.budget-row{display:flex;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px}.budget-row strong{color:var(--green)}
+dialog{border:0;border-radius:16px;padding:0;width:min(520px,calc(100% - 28px));box-shadow:0 20px 70px #0003}
+dialog::backdrop{background:#14251dcc}
+.modal{padding:22px}.modal h2{margin-bottom:16px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:12px;font-weight:650;color:var(--muted)}.field.full{grid-column:1/-1}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.note{font-size:12px;color:var(--muted);margin-top:12px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}#children{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}header:after{right:-40px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">Organização de Natal</div>
+  <h1>🎄 Natal Mágico</h1>
+  <p>Todas as prendas no sítio certo. Um Natal mais tranquilo.</p>
+</header>
+<main>
+  <section class="stats" aria-label="Resumo">
+    <div class="stat"><span>Crianças</span><strong id="statChildren">0</strong></div>
+    <div class="stat"><span>Prendas planeadas</span><strong id="statGifts">0</strong></div>
+    <div class="stat"><span>Compradas</span><strong id="statBought">0</strong></div>
+    <div class="stat"><span>Embrulhadas</span><strong id="statWrapped">0</strong></div>
+  </section>
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Pesquisar criança ou prenda…" aria-label="Pesquisar">
+    <select id="filter" aria-label="Filtrar prendas">
+      <option value="all">Todos os estados</option>
+      <option value="Por comprar">Por comprar</option>
+      <option value="Comprada">Comprada</option>
+      <option value="Por embrulhar">Por embrulhar</option>
+      <option value="Embrulhada">Embrulhada</option>
+      <option value="Entregue">Entregue</option>
+    </select>
+    <button class="primary" id="addChild">＋ Adicionar criança</button>
+  </div>
+  <div class="section-head"><h2>Lista de prendas</h2><span class="age" id="visibleCount"></span></div>
+  <section id="children" aria-live="polite"></section>
+  <section class="panel">
+    <h2>O orçamento de Natal</h2>
+    <div class="progress-track"><div class="progress-fill" id="budgetProgress"></div></div>
+    <div class="budget-row">
+      <span>Orçamento: <strong id="budgetLimit">—</strong></span>
+      <span>Gasto: <strong id="budgetSpent">0,00 €</strong></span>
+      <span>Restante: <strong id="budgetLeft">—</strong></span>
+      <button class="secondary small" id="editBudget">Definir orçamento</button>
+    </div>
+    <p class="note">Os dados ficam guardados neste navegador. Exporta uma cópia regularmente para não perderes a tua lista.</p>
+    <div class="card-actions">
+      <button class="secondary small" id="exportData">Exportar cópia (JSON)</button>
+      <button class="secondary small" id="importButton">Importar cópia</button>
+      <input type="file" id="importFile" accept="application/json" hidden>
+    </div>
+  </section>
+</main>
+<footer>Feito para organizar um Natal cheio de magia ✨</footer>
+
+<dialog id="childDialog">
+<form class="modal" id="childForm">
+  <h2 id="childDialogTitle">Adicionar criança</h2>
+  <div class="form-grid">
+    <div class="field"><label for="childName">Nome *</label><input id="childName" required maxlength="70" placeholder="Nome da criança"></div>
+    <div class="field"><label for="childAge">Idade</label><input id="childAge" type="number" min="0" max="18" placeholder="Ex.: 7"></div>
+    <div class="field full"><label for="childNotes">Notas (tamanho, gostos, etc.)</label><textarea id="childNotes" rows="2" maxlength="300" placeholder="Opcional"></textarea></div>
+    <div class="field full"><label for="gift1">Prenda principal *</label><input id="gift1" required maxlength="120" placeholder="O que vai receber?"></div>
+    <div class="field"><label for="gift1Price">Preço (€)</label><input id="gift1Price" type="number" min="0" step="0.01" placeholder="0,00"></div>
+    <div class="field"><label for="gift1Status">Estado</label><select id="gift1Status"></select></div>
+    <div class="field full"><label for="gift2">Segunda prenda (opcional)</label><input id="gift2" maxlength="120" placeholder="Opcional"></div>
+    <div class="field"><label for="gift2Price">Preço da 2.ª prenda (€)</label><input id="gift2Price" type="number" min="0" step="0.01" placeholder="0,00"></div>
+    <div class="field"><label for="gift2Status">Estado da 2.ª prenda</label><select id="gift2Status"></select></div>
+  </div>
+  <div class="modal-actions"><button type="button" class="secondary" id="cancelChild">Cancelar</button><button class="primary" type="submit">Guardar</button></div>
+</form>
+</dialog>
+<dialog id="budgetDialog">
+<form class="modal" id="budgetForm">
+  <h2>Orçamento de Natal</h2>
+  <div class="field"><label for="budgetInput">Orçamento total (€)</label><input id="budgetInput" type="number" min="0" step="0.01" placeholder="Ex.: 300"></div>
+  <div class="modal-actions"><button type="button" class="secondary" id="cancelBudget">Cancelar</button><button class="primary">Guardar</button></div>
+</form>
+</dialog>
+<script>
+(() => {
+  const KEY = 'natal-magico-v1';
+  const STATUSES = ['Por comprar','Comprada','Por embrulhar','Embrulhada','Entregue'];
+  const $ = id => document.getElementById(id);
+  let data = {children:[], budget:0};
+  let editingId = null;
+  const money = n => (Number(n)||0).toLocaleString('pt-PT',{style:'currency',currency:'EUR'});
+  const escapeHTML = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+  function save(){ localStorage.setItem(KEY,JSON.stringify(data)); render(); }
+  function load(){
+    try { const saved=JSON.parse(localStorage.getItem(KEY)); if(saved && Array.isArray(saved.children)) data={children:saved.children,budget:Number(saved.budget)||0}; } catch(e){}
+  }
+  function statusClass(s){return {'Por comprar':'s-pendente','Comprada':'s-comprada','Por embrulhar':'s-embrulho','Embrulhada':'s-embrulhada','Entregue':'s-entregue'}[s]||'s-pendente'}
+  function giftHTML(gift,index,child){
+    if(!gift || !gift.name) return '';
+    return `<div class="gift">
+      <div class="gift-head"><span class="gift-title">${index===0?'🎁':'🎀'} ${escapeHTML(gift.name)}</span><span class="status ${statusClass(gift.status)}">${escapeHTML(gift.status)}</span></div>
+      <div class="gift-meta">${gift.price>0?money(gift.price)+' · ':''}Prenda ${index+1}</div>
+      <div class="card-actions"><select class="small status-change" data-child="${child.id}" data-gift="${index}" aria-label="Estado de ${escapeHTML(gift.name)}">${STATUSES.map(s=>`<option ${s===gift.status?'selected':''}>${s}</option>`).join('')}</select></div>
+    </div>`;
+  }
+  function render(){
+    const q=$('search').value.trim().toLocaleLowerCase('pt-PT'), filter=$('filter').value;
+    let bought=0,wrapped=0,giftCount=0,spent=0;
+    data.children.forEach(c=>(c.gifts||[]).forEach(g=>{if(g&&g.name){giftCount++;if(['Comprada','Por embrulhar','Embrulhada','Entregue'].includes(g.status))bought++;if(['Embrulhada','Entregue'].includes(g.status))wrapped++;if(['Comprada','Por embrulhar','Embrulhada','Entregue'].includes(g.status))spent+=Number(g.price)||0;}}));
+    $('statChildren').textContent=data.children.length;$('statGifts').textContent=giftCount;$('statBought').textContent=bought;$('statWrapped').textContent=wrapped;
+    const limit=Number(data.budget)||0;$('budgetLimit').textContent=limit?money(limit):'Não definido';$('budgetSpent').textContent=money(spent);$('budgetLeft').textContent=limit?money(limit-spent):'—';$('budgetProgress').style.width=limit?Math.min(100,spent/limit*100)+'%':'0%';
+    const filtered=data.children.filter(c=>{
+      const matches=(c.name+' '+(c.notes||'')+' '+(c.gifts||[]).map(g=>g?.name||'').join(' ')).toLocaleLowerCase('pt-PT').includes(q);
+      const state=filter==='all'||(c.gifts||[]).some(g=>g?.name&&g.status===filter);
+      return matches&&state;
+    });
+    $('visibleCount').textContent=`${filtered.length} de ${data.children.length}`;
+    $('children').innerHTML=filtered.length?filtered.map(c=>`<article class="child-card">
+      <div class="card-top"><div><div class="child-name">${escapeHTML(c.name)}</div><div class="age">${c.age!==''&&c.age!=null?escapeHTML(c.age)+' anos':'Idade não indicada'}</div></div><button class="secondary small edit-child" data-id="${c.id}">Editar</button></div>
+      ${c.notes?`<div class="gift-meta">📝 ${escapeHTML(c.notes)}</div>`:''}
+      ${(c.gifts||[]).map((g,i)=>giftHTML(g,i,c)).join('')||'<div class="gift-meta">Sem prendas registadas.</div>'}
+      <div class="card-actions"><button class="danger small delete-child" data-id="${c.id}">Eliminar criança</button></div>
+    </article>`).join(''):'<div class="empty">🎄 Ainda não há crianças nesta lista.<br>Começa por adicionar a primeira!</div>';
+  }
+  function fillStatusSelect(id,value){$(id).innerHTML=STATUSES.map(s=>`<option ${s===value?'selected':''}>${s}</option>`).join('')}
+  function openChild(c=null){
+    editingId=c?.id||null;$('childDialogTitle').textContent=c?'Editar criança':'Adicionar criança';
+    $('childName').value=c?.name||'';$('childAge').value=c?.age??'';$('childNotes').value=c?.notes||'';
+    const gifts=c?.gifts||[];
+    $('gift1').value=gifts[0]?.name||'';$('gift1Price').value=gifts[0]?.price??'';$('gift2').value=gifts[1]?.name||'';$('gift2Price').value=gifts[1]?.price??'';
+    fillStatusSelect('gift1Status',gifts[0]?.status||'Por comprar');fillStatusSelect('gift2Status',gifts[1]?.status||'Por comprar');
+    $('childDialog').showModal();$('childName').focus();
+  }
+  $('addChild').onclick=()=>openChild();$('cancelChild').onclick=()=>$('childDialog').close();
+  $('childForm').onsubmit=e=>{
+    e.preventDefault();
+    const makeGift=(name,price,status)=>name.trim()?{name:name.trim(),price:Math.max(0,Number(price)||0),status}:null;
+    const child={id:editingId||uid(),name:$('childName').value.trim(),age:$('childAge').value,notes:$('childNotes').value.trim(),gifts:[makeGift($('gift1').value,$('gift1Price').value,$('gift1Status').value),makeGift($('gift2').value,$('gift2Price').value,$('gift2Status').value)]};
+    if(editingId)data.children=data.children.map(c=>c.id===editingId?child:c);else data.children.push(child);
+    save();$('childDialog').close();
+  };
+  $('children').addEventListener('click',e=>{
+    const edit=e.target.closest('.edit-child'),del=e.target.closest('.delete-child');
+    if(edit){const c=data.children.find(x=>x.id===edit.dataset.id);if(c)openChild(c);}
+    if(del&&confirm('Eliminar esta criança e as respetivas prendas?')){data.children=data.children.filter(c=>c.id!==del.dataset.id);save();}
+  });
+  $('children').addEventListener('change',e=>{
+    if(!e.target.matches('.status-change'))return;
+    const c=data.children.find(x=>x.id===e.target.dataset.child),g=c?.gifts?.[Number(e.target.dataset.gift)];
+    if(g){g.status=e.target.value;save();}
+  });
+  $('search').oninput=render;$('filter').onchange=render;
+  $('editBudget').onclick=()=>{$('budgetInput').value=data.budget||'';$('budgetDialog').showModal()};
+  $('cancelBudget').onclick=()=>$('budgetDialog').close();
+  $('budgetForm').onsubmit=e=>{e.preventDefault();data.budget=Math.max(0,Number($('budgetInput').value)||0);save();$('budgetDialog').close()};
+  $('exportData').onclick=()=>{
+    const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='natal-magico-backup.json';a.click();URL.revokeObjectURL(url);
+  };
+  $('importButton').onclick=()=>$('importFile').click();
+  $('importFile').onchange=async e=>{
+    const file=e.target.files[0];if(!file)return;
+    try{const parsed=JSON.parse(await file.text());if(!Array.isArray(parsed.children))throw Error();if(confirm('Importar vai substituir a lista atual. Queres continuar?')){data={children:parsed.children,budget:Number(parsed.budget)||0};save();}}
+    catch(err){alert('Não foi possível importar. Confirma se escolheste um ficheiro JSON válido.');}
+    e.target.value='';
+  };
+  load();render();
+})();
+</script>
+</body>
+</html>
