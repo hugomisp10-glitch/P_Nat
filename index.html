@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Natal Mágico</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<meta name="theme-color" content="#12372a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+:root{--bg:#f3f6f4;--card:#fff;--ink:#1b2a24;--mute:#6b7a72;--line:#dde5e0;--pine:#12372a;--pine-t:#fff;--red:#a3283a;--brass:#c8963e;--chip:#e8efeb;
+--s0:#e8efeb;--s1:#fde8c8;--s2:#d6ecf5;--s3:#e8dcf5;--s4:#d3efdc;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a15;--card:#18271f;--ink:#e6eee9;--mute:#93a39a;--line:#2a3d33;--pine:#c8963e;--pine-t:#1b2a24;--chip:#223329;--s0:#223329;--s1:#4a3a1b;--s2:#1e3a47;--s3:#3b2f50;--s4:#1f4a31}}
+:root[data-theme="dark"]{--bg:#0f1a15;--card:#18271f;--ink:#e6eee9;--mute:#93a39a;--line:#2a3d33;--pine:#c8963e;--pine-t:#1b2a24;--chip:#223329;--s0:#223329;--s1:#4a3a1b;--s2:#1e3a47;--s3:#3b2f50;--s4:#1f4a31}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 system-ui,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0}
+button{font:inherit;border:0;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer;color:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.pri{background:var(--pine);color:var(--pine-t)}.soft{background:var(--chip);color:var(--ink)}.del{background:transparent;color:var(--red)}
+.sm{padding:6px 10px;font-size:13px}
+input,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;min-width:0;width:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px 40px}
+.top{padding:20px 0 10px}
+.top h1{font-size:30px;color:var(--red)}
+.top p{margin:4px 0 0;color:var(--mute)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:8px 0 12px;scrollbar-width:none}
+.tab{white-space:nowrap;background:var(--card);border:1px solid var(--line);flex:none}
+.tab.on{background:var(--pine);color:var(--pine-t);border-color:var(--pine)}
+.head{background:var(--pine);color:var(--pine-t);border-radius:16px;padding:18px}
+.head h2{font-size:26px}
+.head .meta{opacity:.8;font-size:13px;margin-top:2px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.nums b{display:block;font:24px Georgia,serif}.nums span{font-size:12px;opacity:.8}
+.bar{height:6px;background:#ffffff33;border-radius:9px;margin-top:14px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brass);width:0}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.acts .soft{background:#ffffff22;color:inherit}
+.sec{display:flex;justify-content:space-between;align-items:center;margin:22px 0 10px}
+.sec h3{font-size:20px}
+.kid{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.kid-h{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.kid-h h3{font-size:19px}.kid-h small{color:var(--mute)}
+.gift{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.gift:first-of-type{margin-top:10px}
+.gift .n{font-weight:600}.gift .p{color:var(--mute);font-size:13px}
+.st{width:auto;grid-column:1/-1;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:600;border:0}
+.st[data-s="0"]{background:var(--s0)}.st[data-s="1"]{background:var(--s1)}.st[data-s="2"]{background:var(--s2)}.st[data-s="3"]{background:var(--s3)}.st[data-s="4"]{background:var(--s4)}
+.empty{text-align:center;color:var(--mute);padding:34px 12px;background:var(--card);border:1px dashed var(--line);border-radius:14px}
+.nogift{color:var(--mute);font-size:13px;margin-top:8px}
+dialog{border:0;border-radius:16px;padding:0;width:min(520px,calc(100% - 24px));background:var(--card);color:var(--ink)}
+dialog::backdrop{background:#0009}
+form{padding:20px;display:grid;gap:12px}
+label{display:grid;gap:4px;font-size:12px;color:var(--mute);font-weight:600}
+.row{display:grid;grid-template-columns:1fr 110px;gap:10px}
+.gt{font-family:Georgia,serif;font-size:15px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px}
+.fa{display:flex;justify-content:flex-end;gap:8px;margin-top:6px}
+.foot{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tools{display:grid;grid-template-columns:1fr 150px;gap:8px;margin-bottom:12px}
+.tot{font-size:13px;color:var(--mute);margin-top:2px}
+.saved{font-size:12px;color:var(--mute);margin-top:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><h1>🎄 Natal Mágico</h1><p>Eventos, crianças e prendas num só lugar.</p></div>
+  <div class="tabs" id="tabs"></div>
+  <div id="view"></div>
+  <div class="saved" id="saved"></div>
+  <div class="foot">
+    <button class="soft sm" id="inst" hidden>Instalar no telemóvel</button>
+    <button class="soft sm" id="exp">Guardar ficheiro no telemóvel</button>
+    <button class="soft sm" id="imp">Importar cópia</button>
+    <input type="file" id="file" accept=".json,application/json" hidden>
+  </div>
+</div>
+
+<dialog id="evD"><form id="evF">
+  <h2 id="evT">Novo evento</h2>
+  <label>Nome do evento<input id="evName" required maxlength="60" placeholder="Natal 2026"></label>
+  <div class="row"><label>Data<input id="evDate" type="date"></label><label>Orçamento (€)<input id="evBud" type="number" min="0" step=".01"></label></div>
+  <div class="fa"><button type="button" class="soft" data-close>Cancelar</button><button class="pri">Guardar evento</button></div>
+</form></dialog>
+
+<dialog id="kD"><form id="kF">
+  <h2 id="kT">Nova criança</h2>
+  <div class="row"><label>Nome<input id="kName" required maxlength="70"></label><label>Idade<input id="kAge" type="number" min="0" max="18"></label></div>
+  <label>Notas (tamanho, gostos...)<input id="kNotes" maxlength="250"></label>
+  <div class="gt">Prendas (até 3)</div>
+  <div class="row"><label>Prenda 1<input id="g0"></label><label>Valor (€)<input id="p0" type="number" min="0" step=".01"></label></div>
+  <div class="row"><label>Prenda 2<input id="g1"></label><label>Valor (€)<input id="p1" type="number" min="0" step=".01"></label></div>
+  <div class="row"><label>Prenda 3<input id="g2"></label><label>Valor (€)<input id="p2" type="number" min="0" step=".01"></label></div>
+  <div class="fa"><button type="button" class="soft" data-close>Cancelar</button><button class="pri">Guardar criança</button></div>
+</form></dialog>
+
+<script>
+(()=>{
+const KEY="natal-magico-v4",ST=["Por comprar","Comprada","Por embrulhar","Embrulhada","Entregue"];
+const $=id=>document.getElementById(id);
+let db={events:[],current:null},kidEdit=null,evEdit=null,q="",flt=-1;
+const money=n=>(Number(n)||0).toLocaleString("pt-PT",{style:"currency",currency:"EUR"});
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&Array.isArray(s.events))db=s}catch(e){}
+const save=()=>{let ok=true;try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){ok=false}
+  $("saved").textContent=ok?"✓ Guardado neste telemóvel às "+new Date().toLocaleTimeString("pt-PT",{hour:"2-digit",minute:"2-digit"}):"Não foi possível guardar. Exporta uma cópia.";render()};
+const cur=()=>db.events.find(e=>e.id===db.current)||null;
+
+function render(){
+  if(!cur()&&db.events.length)db.current=db.events[0].id;
+  $("tabs").innerHTML=db.events.map(e=>`<button class="tab ${e.id===db.current?"on":""}" data-ev="${e.id}">${esc(e.name)}</button>`).join("")+`<button class="tab soft" id="newEv">＋ Novo evento</button>`;
+  const ev=cur(),v=$("view");
+  if(!ev){v.innerHTML=`<div class="empty">Ainda não tens eventos.<br>Cria o primeiro, por exemplo Natal 2026 ou um aniversário.</div>`;return}
+  const gifts=ev.children.flatMap(c=>c.gifts);
+  const bought=gifts.filter(g=>g.status>=1),spent=bought.reduce((s,g)=>s+(+g.price||0),0);
+  const done=gifts.filter(g=>g.status===4).length;
+  const bud=+ev.budget||0;
+  const tools=ev.children.length?`<div class="tools"><input id="q" type="search" placeholder="Pesquisar criança ou prenda" value="${esc(q)}"><select id="flt"><option value="-1">Todos os estados</option>${ST.map((s,j)=>`<option value="${j}" ${j===flt?"selected":""}>${s}</option>`).join("")}</select></div>`:"";
+  const list=ev.children.filter(c=>(!q||(c.name+" "+c.notes+" "+c.gifts.map(g=>g.name).join(" ")).toLowerCase().includes(q.toLowerCase()))&&(flt<0||c.gifts.some(g=>g.status===flt)));
+  const date=ev.date?new Date(ev.date+"T12:00").toLocaleDateString("pt-PT",{day:"numeric",month:"long",year:"numeric"}):"";
+  v.innerHTML=`
+  <div class="head">
+    <h2>${esc(ev.name)}</h2>
+    <div class="meta">${date?esc(date)+" · ":""}${bud?"Orçamento "+money(bud):"Sem orçamento definido"}</div>
+    <div class="nums">
+      <div><b>${ev.children.length}</b><span>Crianças</span></div>
+      <div><b>${bought.length}/${gifts.length}</b><span>Compradas</span></div>
+      <div><b>${done}/${gifts.length}</b><span>Entregues</span></div>
+    </div>
+    <div class="bar"><i style="width:${bud?Math.min(100,spent/bud*100):0}%"></i></div>
+    <div class="meta" style="margin-top:6px">Gasto ${money(spent)}${bud?" · Disponível "+money(bud-spent):""}</div>
+    <div class="acts"><button class="soft sm" id="shEv">Partilhar lista</button><button class="soft sm" id="dupEv">Duplicar</button><button class="soft sm" id="edEv">Editar evento</button><button class="soft sm" id="delEv">Eliminar evento</button></div>
+  </div>
+  <div class="sec"><h3>Crianças</h3><button class="pri sm" id="newKid">＋ Adicionar criança</button></div>
+  ${tools}${list.length?list.map(c=>`
+  <div class="kid">
+    <div class="kid-h"><div><h3>${esc(c.name)}</h3><small>${c.age!==""&&c.age!=null?esc(c.age)+" anos":""}${c.age!==""&&c.notes?" · ":""}${esc(c.notes)}</small>${c.gifts.length?`<div class="tot">${c.gifts.length} prenda${c.gifts.length>1?"s":""} · ${money(c.gifts.reduce((s,g)=>s+(+g.price||0),0))}</div>`:""}</div>
+      <div><button class="soft sm" data-edit="${c.id}">Editar</button> <button class="del sm" data-del="${c.id}" aria-label="Eliminar criança">✕</button></div></div>
+    ${c.gifts.length?c.gifts.map((g,i)=>`<div class="gift"><div><div class="n">${esc(g.name)}</div><div class="p">${money(g.price)}</div></div>
+      <select class="st" data-s="${g.status}" data-k="${c.id}" data-i="${i}" aria-label="Estado de ${esc(g.name)}">${ST.map((s,j)=>`<option value="${j}" ${j===g.status?"selected":""}>${s}</option>`).join("")}</select></div>`).join(""):`<div class="nogift">Sem prendas. Toca em Editar para adicionar até 3.</div>`}
+  </div>`).join(""):`<div class="empty">${ev.children.length?"Nenhuma criança corresponde à pesquisa.":"Ainda não há crianças neste evento.<br>Adiciona a primeira e escolhe até 3 prendas."}</div>`}`;
+}
+
+// eventos
+function openEv(e){evEdit=e?e.id:null;$("evT").textContent=e?"Editar evento":"Novo evento";$("evName").value=e?.name||"";$("evDate").value=e?.date||"";$("evBud").value=e?.budget||"";$("evD").showModal()}
+$("evF").onsubmit=e=>{e.preventDefault();const o={name:$("evName").value.trim(),date:$("evDate").value,budget:Number($("evBud").value)||0};
+  if(evEdit)Object.assign(db.events.find(x=>x.id===evEdit),o);else{const n={id:uid(),children:[],...o};db.events.push(n);db.current=n.id}
+  save();$("evD").close()};
+
+// crianças
+function openKid(c){kidEdit=c?c.id:null;$("kT").textContent=c?"Editar criança":"Nova criança";
+  $("kName").value=c?.name||"";$("kAge").value=c?.age??"";$("kNotes").value=c?.notes||"";
+  for(let i=0;i<3;i++){$("g"+i).value=c?.gifts[i]?.name||"";$("p"+i).value=c?.gifts[i]?.price||""}
+  $("kD").showModal()}
+$("kF").onsubmit=e=>{e.preventDefault();const ev=cur(),old=ev.children.find(c=>c.id===kidEdit);
+  const gifts=[];for(let i=0;i<3;i++){const n=$("g"+i).value.trim();if(n)gifts.push({name:n,price:Number($("p"+i).value)||0,status:old?.gifts[i]?.status??0})}
+  const k={id:kidEdit||uid(),name:$("kName").value.trim(),age:$("kAge").value,notes:$("kNotes").value.trim(),gifts};
+  if(old)ev.children=ev.children.map(c=>c.id===kidEdit?k:c);else ev.children.push(k);
+  save();$("kD").close()};
+
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.close!==undefined)b.closest("dialog").close();
+  if(b.dataset.ev){db.current=b.dataset.ev;save()}
+  if(b.id==="newEv")openEv();
+  if(b.id==="edEv")openEv(cur());
+  if(b.id==="delEv"&&confirm("Eliminar este evento e todas as suas crianças?")){db.events=db.events.filter(x=>x.id!==db.current);db.current=null;save()}
+  if(b.id==="newKid")openKid();
+  if(b.id==="shEv"){const ev=cur();const t=ev.name+"\n\n"+ev.children.map(c=>c.name+(c.age!==""?" ("+c.age+" anos)":"")+"\n"+c.gifts.map(g=>"• "+g.name+" – "+money(g.price)+" – "+ST[g.status]).join("\n")).join("\n\n");
+    if(navigator.share)navigator.share({title:ev.name,text:t}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>alert("Lista copiada."))}
+  if(b.id==="dupEv"){const ev=cur(),n=JSON.parse(JSON.stringify(ev));n.id=uid();n.name=ev.name+" (cópia)";n.children.forEach(c=>{c.id=uid();c.gifts.forEach(g=>g.status=0)});db.events.push(n);db.current=n.id;save()}
+  if(b.dataset.edit)openKid(cur().children.find(c=>c.id===b.dataset.edit));
+  if(b.dataset.del&&confirm("Eliminar esta criança e as suas prendas?")){cur().children=cur().children.filter(c=>c.id!==b.dataset.del);save()}
+});
+document.addEventListener("change",e=>{
+  if(e.target.id==="flt"){flt=+e.target.value;render();return}
+  if(!e.target.matches(".st"))return;
+  cur().children.find(c=>c.id===e.target.dataset.k).gifts[+e.target.dataset.i].status=+e.target.value;save()});
+
+document.addEventListener("input",e=>{if(e.target.id==="q"){q=e.target.value;render();const i=$("q");i.focus();i.setSelectionRange(q.length,q.length)}});
+
+// cópia de segurança
+$("exp").onclick=async()=>{try{const f=new File([JSON.stringify(db,null,2)],"natal-magico-backup.json",{type:"application/json"});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:"Natal Mágico"});return}}catch(x){if(x.name==="AbortError")return}
+  const u=URL.createObjectURL(new Blob([JSON.stringify(db,null,2)],{type:"application/json"}));const a=document.createElement("a");a.href=u;a.download="natal-magico-backup.json";a.click();URL.revokeObjectURL(u)};
+$("imp").onclick=()=>$("file").click();
+$("file").onchange=async e=>{const f=e.target.files[0];if(!f)return;
+  try{const d=JSON.parse(await f.text());if(!Array.isArray(d.events))throw 0;
+    if(confirm("A importação vai substituir os dados atuais. Continuar?")){db={events:d.events,current:null};save()}}
+  catch(x){alert("Não foi possível importar o ficheiro. Usa uma cópia exportada desta aplicação.")}
+  e.target.value=""};
+render();
+$("saved").textContent="Os dados ficam guardados neste telemóvel.";
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+let dp;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;$("inst").hidden=false});
+$("inst").onclick=()=>{if(dp){dp.prompt();dp=null;$("inst").hidden=true}};
+if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
+})();
+</script>
+</body>
+</html>
