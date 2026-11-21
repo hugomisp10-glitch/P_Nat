@@ -9,62 +9,71 @@
 <meta name="theme-color" content="#12372a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <style>
-:root{--bg:#f3f6f4;--card:#fff;--ink:#1b2a24;--mute:#6b7a72;--line:#dde5e0;--pine:#12372a;--pine-t:#fff;--red:#a3283a;--brass:#c8963e;--chip:#e8efeb;
---s0:#e8efeb;--s1:#fde8c8;--s2:#d6ecf5;--s3:#e8dcf5;--s4:#d3efdc;
+:root{--bg:#f3f6f4;--card:#fff;--ink:#1b2a24;--mute:#6b7a72;--line:#dde5e0;--pine:#12372a;--pine-t:#fff;--red:#a3283a;--brass:#c8963e;--chip:#e8efeb;--s0:#e8efeb;--s1:#fde8c8;--s2:#d6ecf5;--s3:#e8dcf5;--s4:#d3efdc;--warn:#fbe3e1;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a15;--card:#18271f;--ink:#e6eee9;--mute:#93a39a;--line:#2a3d33;--pine:#c8963e;--pine-t:#1b2a24;--chip:#223329;--s0:#223329;--s1:#4a3a1b;--s2:#1e3a47;--s3:#3b2f50;--s4:#1f4a31}}
-:root[data-theme="dark"]{--bg:#0f1a15;--card:#18271f;--ink:#e6eee9;--mute:#93a39a;--line:#2a3d33;--pine:#c8963e;--pine-t:#1b2a24;--chip:#223329;--s0:#223329;--s1:#4a3a1b;--s2:#1e3a47;--s3:#3b2f50;--s4:#1f4a31}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a15;--card:#18271f;--ink:#e6eee9;--mute:#93a39a;--line:#2a3d33;--pine:#c8963e;--pine-t:#1b2a24;--chip:#223329;--s0:#223329;--s1:#4a3a1b;--s2:#1e3a47;--s3:#3b2f50;--s4:#1f4a31;--warn:#4a2226;--red:#ff8d9a}}
+:root[data-theme="dark"]{--bg:#0f1a15;--card:#18271f;--ink:#e6eee9;--mute:#93a39a;--line:#2a3d33;--pine:#c8963e;--pine-t:#1b2a24;--chip:#223329;--s0:#223329;--s1:#4a3a1b;--s2:#1e3a47;--s3:#3b2f50;--s4:#1f4a31;--warn:#4a2226;--red:#ff8d9a}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 system-ui,sans-serif}
 h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0}
 button{font:inherit;border:0;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer;color:inherit}
-button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+a{color:inherit}
 .pri{background:var(--pine);color:var(--pine-t)}.soft{background:var(--chip);color:var(--ink)}.del{background:transparent;color:var(--red)}
 .sm{padding:6px 10px;font-size:13px}
 input,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;min-width:0;width:100%}
 .wrap{max-width:760px;margin:0 auto;padding:0 14px 40px}
-.top{padding:20px 0 10px}
-.top h1{font-size:30px;color:var(--red)}
-.top p{margin:4px 0 0;color:var(--mute)}
+.top{padding:20px 0 10px}.top h1{font-size:30px;color:var(--red)}.top p{margin:4px 0 0;color:var(--mute)}
 .tabs{display:flex;gap:8px;overflow-x:auto;padding:8px 0 12px;scrollbar-width:none}
 .tab{white-space:nowrap;background:var(--card);border:1px solid var(--line);flex:none}
 .tab.on{background:var(--pine);color:var(--pine-t);border-color:var(--pine)}
 .head{background:var(--pine);color:var(--pine-t);border-radius:16px;padding:18px}
-.head h2{font-size:26px}
-.head .meta{opacity:.8;font-size:13px;margin-top:2px}
+.head h2{font-size:26px}.meta{opacity:.85;font-size:13px;margin-top:2px}
 .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
 .nums b{display:block;font:24px Georgia,serif}.nums span{font-size:12px;opacity:.8}
-.bar{height:6px;background:#ffffff33;border-radius:9px;margin-top:14px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--brass);width:0}
-.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.acts .soft{background:#ffffff22;color:inherit}
-.sec{display:flex;justify-content:space-between;align-items:center;margin:22px 0 10px}
-.sec h3{font-size:20px}
+.bar{height:6px;background:#ffffff33;border-radius:9px;margin-top:14px;overflow:hidden}.bar i{display:block;height:100%;background:var(--brass);width:0}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.acts .soft{background:#ffffff22;color:inherit}
+.al{background:var(--warn);color:var(--ink);border-radius:12px;padding:10px 12px;margin-top:10px;font-size:14px}
+.sec{display:flex;justify-content:space-between;align-items:center;margin:22px 0 10px}.sec h3{font-size:20px}
+.tools{display:grid;grid-template-columns:1fr 150px;gap:8px;margin-bottom:12px}
 .kid{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
 .kid-h{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
-.kid-h h3{font-size:19px}.kid-h small{color:var(--mute)}
+.kid-h h3{font-size:19px}.kid-h small,.tot,.hist{color:var(--mute);font-size:13px}.tot.over{color:var(--red);font-weight:600}
+.hist{margin-top:8px}
+.ka{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 .gift{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
-.gift:first-of-type{margin-top:10px}
-.gift .n{font-weight:600}.gift .p{color:var(--mute);font-size:13px}
-.st{width:auto;grid-column:1/-1;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:600;border:0}
+.kid-h+.gift{margin-top:10px}
+.gift .n{font-weight:600}.gift .p{color:var(--mute);font-size:13px}.lk{grid-column:1/-1;font-size:12px;display:flex;gap:12px;color:var(--mute)}
+.st{width:auto;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:600;border:0}
 .st[data-s="0"]{background:var(--s0)}.st[data-s="1"]{background:var(--s1)}.st[data-s="2"]{background:var(--s2)}.st[data-s="3"]{background:var(--s3)}.st[data-s="4"]{background:var(--s4)}
 .empty{text-align:center;color:var(--mute);padding:34px 12px;background:var(--card);border:1px dashed var(--line);border-radius:14px}
-.nogift{color:var(--mute);font-size:13px;margin-top:8px}
-dialog{border:0;border-radius:16px;padding:0;width:min(520px,calc(100% - 24px));background:var(--card);color:var(--ink)}
+dialog{border:0;border-radius:16px;padding:0;width:min(520px,calc(100% - 24px));max-height:90vh;background:var(--card);color:var(--ink)}
 dialog::backdrop{background:#0009}
-form{padding:20px;display:grid;gap:12px}
+form,.dl{padding:20px;display:grid;gap:12px}
 label{display:grid;gap:4px;font-size:12px;color:var(--mute);font-weight:600}
-.row{display:grid;grid-template-columns:1fr 110px;gap:10px}
-.gt{font-family:Georgia,serif;font-size:15px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gb{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:10px}.gb h4{margin:0;font:15px Georgia,serif}
 .fa{display:flex;justify-content:flex-end;gap:8px;margin-top:6px}
-.foot{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.tools{display:grid;grid-template-columns:1fr 150px;gap:8px;margin-bottom:12px}
-.tot{font-size:13px;color:var(--mute);margin-top:2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{background:var(--chip)}
+.si{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}.si small{color:var(--mute)}
+.shop h4{margin:12px 0 0;font:17px Georgia,serif}
 .saved{font-size:12px;color:var(--mute);margin-top:22px}
+.th{width:40px;height:40px;object-fit:cover;border-radius:8px;vertical-align:middle;margin-right:8px}
+.ph{display:flex;gap:8px;align-items:center}.ph input{flex:1}.ph .th{margin:0;flex:none}
+.foot{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+#lock{position:fixed;inset:0;z-index:99;background:var(--bg);display:grid;place-items:center;padding:20px}#lock[hidden]{display:none}
+.lc{display:grid;gap:12px;width:min(300px,100%);text-align:center}.lc h2{color:var(--red)}#pe{color:var(--red);min-height:1.2em;font-size:13px}
+body.locked .wrap{display:none}
+.bc{display:grid;grid-template-columns:84px 1fr auto;gap:8px;align-items:center;font-size:13px;padding:4px 0}.bc span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bf{background:var(--chip);border-radius:6px;height:10px;overflow:hidden}.bf i{display:block;height:100%;background:var(--brass)}
+#pr{display:none}
+@media print{body{background:#fff}.wrap,dialog,#lock{display:none!important}#pr{display:block;color:#000;background:#fff;font:13px system-ui,sans-serif}#pr h1{font-size:24px}#pr h2{font-size:16px;margin:16px 0 4px}#pr table{width:100%;border-collapse:collapse}#pr td{border-bottom:1px solid #ccc;padding:4px 6px}#pr tr{break-inside:avoid}}
 </style>
 </head>
 <body>
+<div id="lock" hidden><div class="lc"><h2>🔒 Natal Mágico</h2><input id="pin" type="password" inputmode="numeric" autocomplete="off" placeholder="PIN" aria-label="PIN"><button class="pri" id="unl">Entrar</button><div id="pe"></div></div></div>
+<div id="pr"></div>
 <div class="wrap">
   <div class="top"><h1>🎄 Natal Mágico</h1><p>Eventos, crianças e prendas num só lugar.</p></div>
   <div class="tabs" id="tabs"></div>
@@ -74,6 +83,8 @@ label{display:grid;gap:4px;font-size:12px;color:var(--mute);font-weight:600}
     <button class="soft sm" id="inst" hidden>Instalar no telemóvel</button>
     <button class="soft sm" id="exp">Guardar ficheiro no telemóvel</button>
     <button class="soft sm" id="imp">Importar cópia</button>
+    <button class="soft sm" id="pinBtn">🔒 Definir PIN</button>
+    <button class="soft sm" id="lockBtn" hidden>Bloquear agora</button>
     <input type="file" id="file" accept=".json,application/json" hidden>
   </div>
 </div>
@@ -81,33 +92,53 @@ label{display:grid;gap:4px;font-size:12px;color:var(--mute);font-weight:600}
 <dialog id="evD"><form id="evF">
   <h2 id="evT">Novo evento</h2>
   <label>Nome do evento<input id="evName" required maxlength="60" placeholder="Natal 2026"></label>
-  <div class="row"><label>Data<input id="evDate" type="date"></label><label>Orçamento (€)<input id="evBud" type="number" min="0" step=".01"></label></div>
+  <div class="r2"><label>Data do evento<input id="evDate" type="date"></label><label>Orçamento (€)<input id="evBud" type="number" min="0" step=".01"></label></div>
+  <div class="r2"><label>Encomendar até<input id="evOrd" type="date"></label><label>Embrulhar até<input id="evWrap" type="date"></label></div>
   <div class="fa"><button type="button" class="soft" data-close>Cancelar</button><button class="pri">Guardar evento</button></div>
 </form></dialog>
 
 <dialog id="kD"><form id="kF">
   <h2 id="kT">Nova criança</h2>
-  <div class="row"><label>Nome<input id="kName" required maxlength="70"></label><label>Idade<input id="kAge" type="number" min="0" max="18"></label></div>
-  <label>Notas (tamanho, gostos...)<input id="kNotes" maxlength="250"></label>
-  <div class="gt">Prendas (até 3)</div>
-  <div class="row"><label>Prenda 1<input id="g0"></label><label>Valor (€)<input id="p0" type="number" min="0" step=".01"></label></div>
-  <div class="row"><label>Prenda 2<input id="g1"></label><label>Valor (€)<input id="p1" type="number" min="0" step=".01"></label></div>
-  <div class="row"><label>Prenda 3<input id="g2"></label><label>Valor (€)<input id="p2" type="number" min="0" step=".01"></label></div>
+  <div class="r2"><label>Nome<input id="kName" required maxlength="70"></label><label>Idade<input id="kAge" type="number" min="0" max="18"></label></div>
+  <div class="r2"><label>Notas (gostos, tamanho...)<input id="kNotes" maxlength="250"></label><label>Limite (€)<input id="kLim" type="number" min="0" step=".01"></label></div>
+  <div id="gs"></div>
   <div class="fa"><button type="button" class="soft" data-close>Cancelar</button><button class="pri">Guardar criança</button></div>
 </form></dialog>
+
+<dialog id="iD"><div class="dl"><h2 id="iT">Ideias</h2><div id="iB"></div><div class="fa"><button class="soft" data-close>Fechar</button></div></div></dialog>
+<datalist id="fl"><option value="Pai Natal"><option value="Avós"><option value="Nós"><option value="Padrinhos"><option value="Tios"></datalist>
+<dialog id="rD"><div class="dl"><h2>📊 Resumo</h2><div id="rB"></div><div class="fa"><button class="soft" id="shSum">Partilhar</button><button class="soft" data-close>Fechar</button></div></div></dialog>
+<dialog id="sD"><div class="dl"><h2>🛒 Lista de compras</h2><div id="sB" class="shop"></div><div class="fa"><button class="soft" data-close>Fechar</button></div></div></dialog>
 
 <script>
 (()=>{
 const KEY="natal-magico-v4",ST=["Por comprar","Comprada","Por embrulhar","Embrulhada","Entregue"];
+const BANDS=[[2,["Livro de pano","Brinquedo de empilhar","Peluche","Instrumento de bebé"]],[5,["Blocos de construção","Puzzle","Triciclo","Cozinha de brincar","Livro ilustrado"]],[8,["Lego","Jogo de tabuleiro","Bicicleta","Kit de ciência","Livro de aventuras"]],[12,["Lego Technic","Patins","Jogo de cartas","Kit de robótica","Banda desenhada"]],[18,["Auscultadores","Mochila","Relógio","Jogo de consola","Cartão-presente"]]];
+const KW={lego:["Set de Lego"],futebol:["Bola de futebol","Camisola de clube"],desenh:["Kit de pintura","Marcadores"],pint:["Kit de pintura"],mús:["Ukulele","Teclado"],music:["Ukulele","Teclado"],leitura:["Coleção de livros"],livro:["Coleção de livros"],boneca:["Boneca","Casa de bonecas"],carro:["Pista de carros"],ciência:["Microscópio"],danç:["Coluna Bluetooth"],animal:["Peluche grande"],jogo:["Jogo de tabuleiro"]};
 const $=id=>document.getElementById(id);
-let db={events:[],current:null},kidEdit=null,evEdit=null,q="",flt=-1;
+let db={events:[],current:null},kidEdit=null,evEdit=null,ideaKid=null,q="",flt=-1;
 const money=n=>(Number(n)||0).toLocaleString("pt-PT",{style:"currency",currency:"EUR"});
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const gp=g=>g.paid>0?+g.paid:(+g.price||0);
+const fmt=s=>new Date(s+"T12:00").toLocaleDateString("pt-PT",{day:"numeric",month:"short"});
+const dd=s=>Math.ceil((new Date(s+"T23:59")-new Date())/864e5);
+const safeUrl=u=>/^https?:\/\//i.test(u)?u:"";
 try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&Array.isArray(s.events))db=s}catch(e){}
 const save=()=>{let ok=true;try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){ok=false}
   $("saved").textContent=ok?"✓ Guardado neste telemóvel às "+new Date().toLocaleTimeString("pt-PT",{hour:"2-digit",minute:"2-digit"}):"Não foi possível guardar. Exporta uma cópia.";render()};
 const cur=()=>db.events.find(e=>e.id===db.current)||null;
+const kid=id=>cur().children.find(c=>c.id===id);
+const ideas=c=>{const a=c.age===""||c.age==null?6:+c.age,n=(c.notes||"").toLowerCase(),o=[];
+  Object.keys(KW).forEach(k=>{if(n.includes(k))o.push(...KW[k])});
+  o.push(...(BANDS.find(x=>a<=x[0])||BANDS[4])[1]);
+  return[...new Set(o)].filter(x=>!c.gifts.some(g=>g.name.toLowerCase()===x.toLowerCase()))};
+const alerts=(ev,gifts)=>{const al=[];
+  [[ev.orderBy,g=>!g.status,"Encomendar","por comprar"],[ev.wrapBy,g=>g.status<3,"Embrulhar","por embrulhar"]].forEach(([d,f,v,t])=>{
+    if(!d)return;const n=gifts.filter(f).length;if(!n)return;const r=dd(d);
+    if(r<0)al.push(`⚠️ Prazo para ${v.toLowerCase()} passou (${fmt(d)}): ${n} ${t}`);
+    else if(r<=7)al.push(`⏰ ${v} até ${fmt(d)} (${r===0?"hoje":"faltam "+r+" dias"}): ${n} ${t}`)});
+  return al};
 
 function render(){
   if(!cur()&&db.events.length)db.current=db.events[0].id;
@@ -115,52 +146,79 @@ function render(){
   const ev=cur(),v=$("view");
   if(!ev){v.innerHTML=`<div class="empty">Ainda não tens eventos.<br>Cria o primeiro, por exemplo Natal 2026 ou um aniversário.</div>`;return}
   const gifts=ev.children.flatMap(c=>c.gifts);
-  const bought=gifts.filter(g=>g.status>=1),spent=bought.reduce((s,g)=>s+(+g.price||0),0);
-  const done=gifts.filter(g=>g.status===4).length;
-  const bud=+ev.budget||0;
+  const bought=gifts.filter(g=>g.status>=1),spent=bought.reduce((s,g)=>s+gp(g),0);
+  const todo=gifts.filter(g=>!g.status).reduce((s,g)=>s+(+g.price||0),0);
+  const done=gifts.filter(g=>g.status===4).length,bud=+ev.budget||0;
+  const left=ev.date?dd(ev.date):null;
+  const al=alerts(ev,gifts);
+  if(bud&&spent+todo>bud)al.push(`⚠️ Gasto mais previsto (${money(spent+todo)}) ultrapassa o orçamento em ${money(spent+todo-bud)}`);
   const tools=ev.children.length?`<div class="tools"><input id="q" type="search" placeholder="Pesquisar criança ou prenda" value="${esc(q)}"><select id="flt"><option value="-1">Todos os estados</option>${ST.map((s,j)=>`<option value="${j}" ${j===flt?"selected":""}>${s}</option>`).join("")}</select></div>`:"";
-  const list=ev.children.filter(c=>(!q||(c.name+" "+c.notes+" "+c.gifts.map(g=>g.name).join(" ")).toLowerCase().includes(q.toLowerCase()))&&(flt<0||c.gifts.some(g=>g.status===flt)));
-  const date=ev.date?new Date(ev.date+"T12:00").toLocaleDateString("pt-PT",{day:"numeric",month:"long",year:"numeric"}):"";
+  const list=ev.children.filter(c=>(!q||(c.name+" "+c.notes+" "+c.gifts.map(g=>g.name+" "+(g.from||"")).join(" ")).toLowerCase().includes(q.toLowerCase()))&&(flt<0||c.gifts.some(g=>g.status===flt)));
   v.innerHTML=`
   <div class="head">
     <h2>${esc(ev.name)}</h2>
-    <div class="meta">${date?esc(date)+" · ":""}${bud?"Orçamento "+money(bud):"Sem orçamento definido"}</div>
-    <div class="nums">
-      <div><b>${ev.children.length}</b><span>Crianças</span></div>
-      <div><b>${bought.length}/${gifts.length}</b><span>Compradas</span></div>
-      <div><b>${done}/${gifts.length}</b><span>Entregues</span></div>
-    </div>
+    <div class="meta">${ev.date?fmt(ev.date)+(left>0?" · faltam "+left+" dias":left===0?" · é hoje!":" · já passou")+" · ":""}${bud?"Orçamento "+money(bud):"Sem orçamento"}</div>
+    <div class="nums"><div><b>${ev.children.length}</b><span>Crianças</span></div><div><b>${bought.length}/${gifts.length}</b><span>Compradas</span></div><div><b>${done}/${gifts.length}</b><span>Entregues</span></div></div>
     <div class="bar"><i style="width:${bud?Math.min(100,spent/bud*100):0}%"></i></div>
-    <div class="meta" style="margin-top:6px">Gasto ${money(spent)}${bud?" · Disponível "+money(bud-spent):""}</div>
-    <div class="acts"><button class="soft sm" id="shEv">Partilhar lista</button><button class="soft sm" id="dupEv">Duplicar</button><button class="soft sm" id="edEv">Editar evento</button><button class="soft sm" id="delEv">Eliminar evento</button></div>
+    <div class="meta" style="margin-top:6px">Gasto ${money(spent)} · Falta comprar ~${money(todo)}${bud?" · Disponível "+money(bud-spent-todo):""}</div>
+    ${al.map(a=>`<div class="al">${a}</div>`).join("")}
+    <div class="acts"><button class="soft sm" id="shopBtn">🛒 Lista de compras</button><button class="soft sm" id="sumBtn">📊 Resumo</button><button class="soft sm" id="prBtn">🖨️ Imprimir</button><button class="soft sm" id="shEv">Partilhar</button><button class="soft sm" id="dupEv">Novo ano</button><button class="soft sm" id="edEv">Editar</button><button class="soft sm" id="delEv">Eliminar</button></div>
   </div>
   <div class="sec"><h3>Crianças</h3><button class="pri sm" id="newKid">＋ Adicionar criança</button></div>
-  ${tools}${list.length?list.map(c=>`
+  ${tools}${list.length?list.map(c=>{const tp=c.gifts.reduce((s,g)=>s+gp(g),0),over=c.limit>0&&tp>c.limit;return`
   <div class="kid">
-    <div class="kid-h"><div><h3>${esc(c.name)}</h3><small>${c.age!==""&&c.age!=null?esc(c.age)+" anos":""}${c.age!==""&&c.notes?" · ":""}${esc(c.notes)}</small>${c.gifts.length?`<div class="tot">${c.gifts.length} prenda${c.gifts.length>1?"s":""} · ${money(c.gifts.reduce((s,g)=>s+(+g.price||0),0))}</div>`:""}</div>
-      <div><button class="soft sm" data-edit="${c.id}">Editar</button> <button class="del sm" data-del="${c.id}" aria-label="Eliminar criança">✕</button></div></div>
-    ${c.gifts.length?c.gifts.map((g,i)=>`<div class="gift"><div><div class="n">${esc(g.name)}</div><div class="p">${money(g.price)}</div></div>
-      <select class="st" data-s="${g.status}" data-k="${c.id}" data-i="${i}" aria-label="Estado de ${esc(g.name)}">${ST.map((s,j)=>`<option value="${j}" ${j===g.status?"selected":""}>${s}</option>`).join("")}</select></div>`).join(""):`<div class="nogift">Sem prendas. Toca em Editar para adicionar até 3.</div>`}
-  </div>`).join(""):`<div class="empty">${ev.children.length?"Nenhuma criança corresponde à pesquisa.":"Ainda não há crianças neste evento.<br>Adiciona a primeira e escolhe até 3 prendas."}</div>`}`;
+    <div class="kid-h"><div><h3>${esc(c.name)}</h3><small>${c.age!==""&&c.age!=null?esc(c.age)+" anos":""}${c.age!==""&&c.notes?" · ":""}${esc(c.notes)}</small>
+      ${c.gifts.length?`<div class="tot ${over?"over":""}">${c.gifts.length} prenda${c.gifts.length>1?"s":""} · ${money(tp)}${c.limit>0?" de "+money(c.limit):""}${over?" (acima em "+money(tp-c.limit)+")":""}</div>`:""}</div>
+      <div class="ka">${c.gifts.length<3?`<button class="soft sm" data-idea="${c.id}">💡 Ideias</button>`:""}<button class="soft sm" data-edit="${c.id}">Editar</button><button class="del sm" data-del="${c.id}" aria-label="Eliminar criança">✕</button></div></div>
+    ${c.gifts.length?c.gifts.map((g,i)=>{const k=encodeURIComponent(g.name),u=safeUrl(g.url);return`<div class="gift"><div><div class="n">${g.photo?`<img class="th" src="${g.photo}" alt="">`:""}${u?`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(g.name)} ↗</a>`:esc(g.name)}</div>
+      <div class="p">${g.from?"🎁 "+esc(g.from)+" · ":""}${g.store?esc(g.store)+" · ":""}Previsto ${money(g.price)}${g.paid>0?` · Pago ${money(g.paid)} (${g.paid-g.price>0?"+":""}${money(g.paid-g.price)})`:""}</div></div>
+      <select class="st" data-s="${g.status}" data-k="${c.id}" data-i="${i}" aria-label="Estado de ${esc(g.name)}">${ST.map((s,j)=>`<option value="${j}" ${j===g.status?"selected":""}>${s}</option>`).join("")}</select>
+      ${g.status?"":`<div class="lk"><span>Ver preços:</span><a href="https://www.kuantokusta.pt/search?q=${k}" target="_blank" rel="noopener">KuantoKusta</a><a href="https://www.google.com/search?tbm=shop&q=${k}" target="_blank" rel="noopener">Google</a></div>`}</div>`}).join(""):`<div class="hist">Sem prendas. Toca em Ideias ou Editar.</div>`}
+    ${c.history&&c.history.length?`<div class="hist">Anos anteriores: ${c.history.map(h=>esc(h.ev)+": "+esc(h.gifts.join(", ")||"—")).join(" · ")}</div>`:""}
+  </div>`}).join(""):`<div class="empty">${ev.children.length?"Nenhuma criança corresponde à pesquisa.":"Ainda não há crianças neste evento.<br>Adiciona a primeira e escolhe até 3 prendas."}</div>`}`;
 }
 
-// eventos
-function openEv(e){evEdit=e?e.id:null;$("evT").textContent=e?"Editar evento":"Novo evento";$("evName").value=e?.name||"";$("evDate").value=e?.date||"";$("evBud").value=e?.budget||"";$("evD").showModal()}
-$("evF").onsubmit=e=>{e.preventDefault();const o={name:$("evName").value.trim(),date:$("evDate").value,budget:Number($("evBud").value)||0};
+function openEv(e){evEdit=e?e.id:null;$("evT").textContent=e?"Editar evento":"Novo evento";$("evName").value=e?.name||"";$("evDate").value=e?.date||"";$("evBud").value=e?.budget||"";$("evOrd").value=e?.orderBy||"";$("evWrap").value=e?.wrapBy||"";$("evD").showModal()}
+$("evF").onsubmit=e=>{e.preventDefault();const o={name:$("evName").value.trim(),date:$("evDate").value,budget:Number($("evBud").value)||0,orderBy:$("evOrd").value,wrapBy:$("evWrap").value};
   if(evEdit)Object.assign(db.events.find(x=>x.id===evEdit),o);else{const n={id:uid(),children:[],...o};db.events.push(n);db.current=n.id}
   save();$("evD").close()};
 
-// crianças
+$("gs").innerHTML=[0,1,2].map(i=>`<div class="gb"><h4>Prenda ${i+1}</h4><input id="g${i}" placeholder="Nome da prenda"><div class="r2"><label>Previsto (€)<input id="p${i}" type="number" min="0" step=".01"></label><label>Pago (€)<input id="a${i}" type="number" min="0" step=".01"></label></div><div class="r2"><input id="s${i}" placeholder="Loja"><input id="u${i}" type="url" placeholder="Link (https://...)"></div><input id="fr${i}" list="fl" placeholder="De quem vem (Pai Natal, Avós, Nós...)"><div class="ph"><img id="im${i}" class="th" alt="" hidden><input id="f${i}" type="file" accept="image/*" aria-label="Foto da prenda ${i+1}"><button type="button" class="soft sm" data-rmph="${i}">Remover foto</button></div></div>`).join("");
+let ph=["","",""];const setPh=i=>{const m=$("im"+i);m.hidden=!ph[i];m.src=ph[i]||""};
+const rs=f=>new Promise(r=>{const i=new Image,u=URL.createObjectURL(f);i.onload=()=>{const s=Math.min(1,160/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=Math.round(i.width*s);c.height=Math.round(i.height*s);c.getContext("2d").drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);r(c.toDataURL("image/jpeg",.6))};i.onerror=()=>r("");i.src=u});
 function openKid(c){kidEdit=c?c.id:null;$("kT").textContent=c?"Editar criança":"Nova criança";
-  $("kName").value=c?.name||"";$("kAge").value=c?.age??"";$("kNotes").value=c?.notes||"";
-  for(let i=0;i<3;i++){$("g"+i).value=c?.gifts[i]?.name||"";$("p"+i).value=c?.gifts[i]?.price||""}
+  $("kName").value=c?.name||"";$("kAge").value=c?.age??"";$("kNotes").value=c?.notes||"";$("kLim").value=c?.limit||"";
+  for(let i=0;i<3;i++){const g=c?.gifts[i]||{};$("g"+i).value=g.name||"";$("p"+i).value=g.price||"";$("a"+i).value=g.paid||"";$("s"+i).value=g.store||"";$("u"+i).value=g.url||"";$("f"+i).value="";$("fr"+i).value=g.from||"";ph[i]=g.photo||"";setPh(i)}
   $("kD").showModal()}
-$("kF").onsubmit=e=>{e.preventDefault();const ev=cur(),old=ev.children.find(c=>c.id===kidEdit);
-  const gifts=[];for(let i=0;i<3;i++){const n=$("g"+i).value.trim();if(n)gifts.push({name:n,price:Number($("p"+i).value)||0,status:old?.gifts[i]?.status??0})}
-  const k={id:kidEdit||uid(),name:$("kName").value.trim(),age:$("kAge").value,notes:$("kNotes").value.trim(),gifts};
+$("kF").onsubmit=e=>{e.preventDefault();const ev=cur(),old=ev.children.find(c=>c.id===kidEdit),gifts=[];
+  for(let i=0;i<3;i++){const n=$("g"+i).value.trim();if(n)gifts.push({name:n,price:Number($("p"+i).value)||0,paid:Number($("a"+i).value)||0,store:$("s"+i).value.trim(),url:safeUrl($("u"+i).value.trim()),photo:ph[i]||"",from:$("fr"+i).value.trim(),status:old?.gifts[i]?.status??0})}
+  const k={id:kidEdit||uid(),name:$("kName").value.trim(),age:$("kAge").value,notes:$("kNotes").value.trim(),limit:Number($("kLim").value)||0,gifts,history:old?.history||[]};
   if(old)ev.children=ev.children.map(c=>c.id===kidEdit?k:c);else ev.children.push(k);
   save();$("kD").close()};
 
+function showIdeas(){const c=kid(ideaKid);if(!c||c.gifts.length>=3){$("iD").close();return}
+  $("iT").textContent="Ideias para "+c.name;
+  $("iB").innerHTML=`<p style="color:var(--mute);margin:0 0 10px">Com base na idade e nas notas. Toca para adicionar como prenda.</p><div class="chips">${ideas(c).map((x,i)=>`<button class="chip sm" data-add="${esc(x)}">＋ ${esc(x)}</button>`).join("")}</div>`;
+  if(!$("iD").open)$("iD").showModal()}
+function showShop(){const g={};cur().children.forEach(c=>c.gifts.forEach((x,i)=>{if(!x.status)(g[x.store||"Sem loja"]??=[]).push({c,x,i})}));
+  const ks=Object.keys(g);
+  $("sB").innerHTML=ks.length?ks.map(k=>`<h4>${esc(k)} · ${money(g[k].reduce((s,o)=>s+(+o.x.price||0),0))}</h4>`+g[k].map(o=>`<div class="si"><div>${esc(o.x.name)}<br><small>${esc(o.c.name)} · ${money(o.x.price)}</small></div><button class="soft sm" data-buy="${o.c.id}:${o.i}">✓ Comprada</button></div>`).join("")).join(""):`<div class="empty">Tudo comprado! 🎁</div>`;
+  if(!$("sD").open)$("sD").showModal()}
+
+let sumT="";
+const bars=(t,a)=>{if(!a.length)return"";const m=Math.max(...a.map(x=>x[1]))||1;return`<h4 style="margin:14px 0 4px;font:17px Georgia,serif">${t}</h4>`+a.map(x=>`<div class="bc"><span>${esc(x[0])}</span><span class="bf"><i style="width:${Math.round(x[1]/m*100)}%"></i></span><b>${money(x[1])}</b></div>`).join("")};
+function printList(){const ev=cur();let h=`<h1>${esc(ev.name)}</h1><p>${ev.date?fmt(ev.date):""}</p>`;
+  ev.children.forEach(c=>{if(!c.gifts.length)return;h+=`<h2>${esc(c.name)}${c.age!==""&&c.age!=null?" ("+esc(c.age)+" anos)":""}</h2><table>`+c.gifts.map(g=>`<tr><td>${g.status?"☑":"☐"}</td><td>${esc(g.name)}${g.from?" · de "+esc(g.from):""}</td><td>${esc(g.store||"")}</td><td>${money(gp(g))}</td><td>${ST[g.status]}</td></tr>`).join("")+"</table>"});
+  $("pr").innerHTML=h;window.print()}
+function showSum(){const ev=cur(),gs=ev.children.flatMap(c=>c.gifts),b=gs.filter(g=>g.status>0),spent=b.reduce((s,g)=>s+gp(g),0),cmp=b.filter(g=>g.paid>0&&g.price>0),sav=cmp.reduce((s,g)=>s+g.price-g.paid,0),rest=gs.filter(g=>!g.status).reduce((s,g)=>s+(+g.price||0),0),bud=+ev.budget||0;
+  const L=[["Prendas compradas",b.length+" de "+gs.length],["Total gasto",money(spent)],[sav>=0?"Poupado face ao previsto":"Gasto acima do previsto",money(Math.abs(sav))]];
+  if(rest>0)L.push(["Ainda por comprar (previsto)",money(rest)]);
+  if(bud)L.push([bud-spent>=0?"Sobra do orçamento":"Acima do orçamento",money(Math.abs(bud-spent))]);
+  const rows=ev.children.flatMap(c=>c.gifts.filter(g=>g.status>0).map(g=>({c:c.name,s:g.store||"Sem loja",f:g.from||"",v:gp(g)})));const grp=k=>{const m={};rows.forEach(r=>{if(r[k])m[r[k]]=(m[r[k]]||0)+r.v});return Object.entries(m).sort((a,b)=>b[1]-a[1])};
+  const C=ev.children.map(c=>[c.name,money(c.gifts.filter(g=>g.status>0).reduce((s,g)=>s+gp(g),0))]);
+  sumT=ev.name+"\n"+L.map(x=>x[0]+": "+x[1]).join("\n")+"\n\nPor criança\n"+C.map(x=>x[0]+": "+x[1]).join("\n");
+  $("rB").innerHTML=L.map(x=>`<div class="si"><span>${x[0]}</span><b>${x[1]}</b></div>`).join("")+bars("Por criança",grp("c"))+bars("Por loja",grp("s"))+bars("Por origem",grp("f"));
+  $("rD").showModal()}
 document.addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
   if(b.dataset.close!==undefined)b.closest("dialog").close();
@@ -169,20 +227,29 @@ document.addEventListener("click",e=>{
   if(b.id==="edEv")openEv(cur());
   if(b.id==="delEv"&&confirm("Eliminar este evento e todas as suas crianças?")){db.events=db.events.filter(x=>x.id!==db.current);db.current=null;save()}
   if(b.id==="newKid")openKid();
-  if(b.id==="shEv"){const ev=cur();const t=ev.name+"\n\n"+ev.children.map(c=>c.name+(c.age!==""?" ("+c.age+" anos)":"")+"\n"+c.gifts.map(g=>"• "+g.name+" – "+money(g.price)+" – "+ST[g.status]).join("\n")).join("\n\n");
-    if(navigator.share)navigator.share({title:ev.name,text:t}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>alert("Lista copiada."))}
-  if(b.id==="dupEv"){const ev=cur(),n=JSON.parse(JSON.stringify(ev));n.id=uid();n.name=ev.name+" (cópia)";n.children.forEach(c=>{c.id=uid();c.gifts.forEach(g=>g.status=0)});db.events.push(n);db.current=n.id;save()}
-  if(b.dataset.edit)openKid(cur().children.find(c=>c.id===b.dataset.edit));
+  if(b.id==="shopBtn")showShop();
+  if(b.id==="sumBtn")showSum();
+  if(b.id==="prBtn")printList();
+  if(b.id==="shSum"){if(navigator.share)navigator.share({title:"Resumo",text:sumT}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(sumT).then(()=>alert("Resumo copiado."))}
+  if(b.dataset.rmph){const i=+b.dataset.rmph;ph[i]="";setPh(i);$("f"+i).value=""}
+  if(b.dataset.edit)openKid(kid(b.dataset.edit));
+  if(b.dataset.idea){ideaKid=b.dataset.idea;showIdeas()}
+  if(b.dataset.add){const c=kid(ideaKid);if(c&&c.gifts.length<3){c.gifts.push({name:b.dataset.add,price:0,paid:0,store:"",url:"",status:0});save();showIdeas()}}
+  if(b.dataset.buy){const[id,i]=b.dataset.buy.split(":");kid(id).gifts[+i].status=1;save();showShop()}
   if(b.dataset.del&&confirm("Eliminar esta criança e as suas prendas?")){cur().children=cur().children.filter(c=>c.id!==b.dataset.del);save()}
+  if(b.id==="shEv"){const ev=cur(),t=ev.name+"\n\n"+ev.children.map(c=>c.name+(c.age!==""?" ("+c.age+" anos)":"")+"\n"+c.gifts.map(g=>"• "+g.name+" – "+money(g.price)+(g.from?" – de "+g.from:"")+(g.store?" – "+g.store:"")+" – "+ST[g.status]).join("\n")).join("\n\n");
+    if(navigator.share)navigator.share({title:ev.name,text:t}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>alert("Lista copiada."))}
+  if(b.id==="dupEv"){const ev=cur(),n=JSON.parse(JSON.stringify(ev));n.id=uid();n.name=ev.name+" (novo ano)";n.date=n.orderBy=n.wrapBy="";
+    n.children.forEach(c=>{c.id=uid();c.history=[...(c.history||[]),{ev:ev.name,gifts:c.gifts.map(g=>g.name)}];c.gifts=[]});
+    db.events.push(n);db.current=n.id;save()}
 });
 document.addEventListener("change",e=>{
+  if(/^f[0-2]$/.test(e.target.id)){const i=+e.target.id[1],f=e.target.files[0];if(f)rs(f).then(d=>{ph[i]=d;setPh(i)});return}
   if(e.target.id==="flt"){flt=+e.target.value;render();return}
   if(!e.target.matches(".st"))return;
-  cur().children.find(c=>c.id===e.target.dataset.k).gifts[+e.target.dataset.i].status=+e.target.value;save()});
-
+  kid(e.target.dataset.k).gifts[+e.target.dataset.i].status=+e.target.value;save()});
 document.addEventListener("input",e=>{if(e.target.id==="q"){q=e.target.value;render();const i=$("q");i.focus();i.setSelectionRange(q.length,q.length)}});
 
-// cópia de segurança
 $("exp").onclick=async()=>{try{const f=new File([JSON.stringify(db,null,2)],"natal-magico-backup.json",{type:"application/json"});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:"Natal Mágico"});return}}catch(x){if(x.name==="AbortError")return}
   const u=URL.createObjectURL(new Blob([JSON.stringify(db,null,2)],{type:"application/json"}));const a=document.createElement("a");a.href=u;a.download="natal-magico-backup.json";a.click();URL.revokeObjectURL(u)};
 $("imp").onclick=()=>$("file").click();
@@ -192,6 +259,23 @@ $("file").onchange=async e=>{const f=e.target.files[0];if(!f)return;
   catch(x){alert("Não foi possível importar o ficheiro. Usa uma cópia exportada desta aplicação.")}
   e.target.value=""};
 render();
+const PK="natal-magico-pin";
+const H=async s=>{try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("nm:"+s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){return btoa("nm:"+s)}};
+const gpin=()=>{try{return localStorage.getItem(PK)}catch(e){return null}};
+const pinUI=()=>{$("pinBtn").textContent=gpin()?"🔒 Alterar/remover PIN":"🔒 Definir PIN";$("lockBtn").hidden=!gpin()};
+const lockUp=()=>{if(!gpin())return;document.querySelectorAll("dialog[open]").forEach(d=>d.close());$("lock").hidden=false;document.body.classList.add("locked");$("pin").value="";$("pe").textContent=""};
+$("unl").onclick=async()=>{if(await H($("pin").value)===gpin()){$("lock").hidden=true;document.body.classList.remove("locked")}else{$("pe").textContent="PIN incorreto";$("pin").value=""}};
+$("pin").onkeydown=e=>{if(e.key==="Enter")$("unl").click()};
+$("lockBtn").onclick=lockUp;
+$("pinBtn").onclick=async()=>{const has=gpin();
+  if(has){const c=prompt("PIN atual:");if(c===null)return;if(await H(c)!==has){alert("PIN incorreto.");return}}
+  const n=prompt(has?"Novo PIN (4 a 8 dígitos). Deixa vazio para remover:":"Escolhe um PIN (4 a 8 dígitos):");if(n===null)return;
+  if(has&&n===""){try{localStorage.removeItem(PK)}catch(e){}pinUI();return}
+  if(!/^\d{4,8}$/.test(n)){alert("O PIN deve ter entre 4 e 8 dígitos.");return}
+  if(prompt("Repete o PIN:")!==n){alert("Os PIN não coincidem.");return}
+  try{localStorage.setItem(PK,await H(n));alert("PIN guardado.")}catch(e){alert("Não foi possível guardar o PIN.")}pinUI()};
+let hid=0;document.addEventListener("visibilitychange",()=>{if(document.hidden)hid=Date.now();else if(hid&&Date.now()-hid>3e5)lockUp()});
+pinUI();lockUp();
 $("saved").textContent="Os dados ficam guardados neste telemóvel.";
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 let dp;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;$("inst").hidden=false});
